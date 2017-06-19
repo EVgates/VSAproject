@@ -12,11 +12,13 @@ age = int(raw_input("Enter your age: "))
 birthday = raw_input("Has your birthday happened this year? Enter Y or N: ")
 
 if birthday == "Y":
-    # Calculates the year that the user will be 100
-    year_100 = str((100 - age) + 2017)
+    year= 2017
 
 else:
-    # Calculates the year that the user will be 100
-    year_100 = str((100 - age) + 2016)
+    year= 2016
+answer=year
+for number in range (int(age), 101):
+    answer = answer + 1
+    print name, " will turn", int(age+1), "in the year ", int(answer), "."
 
-print name, " will turn 100 in the year ", year_100, "."
+print "done"
