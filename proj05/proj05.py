@@ -83,22 +83,22 @@ def is_right(side1, side2, side3):
     return False
 
 
-def divisors(num):
-    myList = []
-    b=int(num)
-    for b in range(1, num+1):
-        a=int(num)%b
-        if a==0:
-             myList.append(b)
-    return myList
+#def divisors(num):
+  #  myList = []
+  #  b=int(num)
+   # for b in range(1, num+1):
+      #  a=int(num)%b
+       # if a==0:
+            # myList.append(b)
+   # return myList
 #print divisors(8)
 
-def prime(num):
-    length = len(divisors(num))
-    if length==2:
-        return True
-    else:
-        return False
+#def prime(num):
+    #length = len(divisors(num))
+    #if length==2:
+        #return True
+    #else:
+        #return False
 #print prime(8)
 
 
@@ -123,6 +123,57 @@ def prime(num):
 
 #else:
    # print True
+
+import random
+lst1= [1, 1, 2, 3, 4, 8, 13, 21, 34, 55, 89]
+lst2= [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+for number in list:
+    numero=random.randint(1,99)
+
+def intersection(lst1, lst2):
+    myList=[]
+    for numbers in lst1:
+        if numbers in lst2:
+            myList.append(numbers)
+    return myList
+print intersection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
