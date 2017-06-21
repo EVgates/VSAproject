@@ -31,8 +31,12 @@ def find_ab(side1, side2, side3):
     :param side3: int or float
     :return: list of 2 ints or floats
     """
-    return [0, 0]
-
+    if side1 > side2 and side1 > side3:
+        return [side2, side3]
+    elif side2 > side1 and side2 > side3:
+        return [side1, side3]
+    elif side3 > side2 and side3 > side1:
+        return [side1, side2]
 def find_c(side1, side2, side3):
     """
     Takes three side lengths an returns the largest
@@ -41,15 +45,25 @@ def find_c(side1, side2, side3):
     :param side3: int or float
     :return: int or float
     """
-    return 0
+
+    if side1 > side2 and side1 > side3:
+        return side1
+    elif side2 > side1 and side2 > side3:
+        return side2
+    elif side3 > side2 and side3 > side1:
+        return side3
 
 def square(side):
-    """
-    Takes a side length and returns the side length squared
-    :param side: int or float
-    :return: int or float
-    """
-    return 0
+    return side*side
+
+
+
+ # """
+ #    Takes a side length and returns the side length squared
+ #    :param side: int or float
+ #    :return: int or float
+ #    """
+
 
 def pythagorean(a,b,c):
     """
@@ -59,7 +73,13 @@ def pythagorean(a,b,c):
     :param c: int or float
     :return: bool
     """
-    return False
+    if square(a)+square(b)==square(c):
+        return True
+    else:
+        return False
+
+
+
 
 def is_right(side1, side2, side3):
     """
@@ -69,49 +89,47 @@ def is_right(side1, side2, side3):
     :param side3: int or float
     :return: bool
     """
-    return False
-
-
-#def divisors(num):
-  #  myList = []
-  #  b=int(num)
-   # for b in range(1, num+1):
-      #  a=int(num)%b
-       # if a==0:
-            # myList.append(b)
-   # return myList
-#print divisors(8)
-
-#def prime(num):
-    #length = len(divisors(num))
-    #if length==2:
-        #return True
-    #else:
-        #return False
-#print prime(8)
+    Small= find_ab(side1, side2, side3)
+    a=Small[0]
+    b=Small[1]
+    c= find_c(side1, side2, side3)
+    p=pythagorean(a,b,c)
+    return p
 
 
 
+def divisors(num):
+    myList = []
+    b=int(num)
+    for b in range(1, num+1):
+        a=int(num)%b
+        if a==0:
+             myList.append(b)
+    return myList
+print divisors(8)
 
-#def divisors(num):
-   # myList = []
-   # b=int(num)
-   # while b>0:
-      #  a=int(num)%b
-       # if a==0:
-        #     myList.append(b)
-    #    b=b-1
-    #return myList
-#print divisors(8)
+def prime(num):
+    length = len(divisors(num))
+    if length==2:
+        return True
+    else:
+        return False
+print prime(8)
 
-#list(int)=amble
-#def prime(num):
-   # return bool
-#if >2:
-   # print False
 
-#else:
-   # print True
+
+
+# def divisors(num):
+#     myList = []
+#     b=int(num)
+#     while b>0:
+#        a=int(num)%b
+#        if a==0:
+#             myList.append(b)
+#        b=b-1
+#     return myList
+# print divisors(8)
+
 
 import random
 lst1= [1, 1, 2, 3, 4, 8, 13, 21, 34, 55, 89]
@@ -143,6 +161,38 @@ def intersection(list, list2):
             myList.append(numbers)
     return myList
 print intersection(list, list2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
