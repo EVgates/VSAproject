@@ -21,17 +21,6 @@ def prime(num):
     """
     return False
 
-# Part II
-
-def intersection(lst1, lst2):
-    """
-    Takes two lists and returns a list of the elements in common between the lists
-    :param lst1: list, any type
-    :param lst2: list, any type
-    :return: list, any type
-    """
-    return ["test"]
-
 # Part III
 
 def find_ab(side1, side2, side3):
@@ -127,65 +116,33 @@ def is_right(side1, side2, side3):
 import random
 lst1= [1, 1, 2, 3, 4, 8, 13, 21, 34, 55, 89]
 lst2= [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-for number in list:
-    numero=random.randint(1,99)
+list =[1, 2, 1, 1, 1, 3, 2, 1, 2, 1, 2, 1]
+list2=[1, 2, 1, 1, 1, 3, 2, 1, 2, 1, 2, 1]
 
-def intersection(lst1, lst2):
+
+a=0
+for number in list:
+    list[a]=random.randint(1,99)
+    a= a+1
+print list
+
+
+
+b=0
+for number in list2:
+    list2[b]=random.randint(1,99)
+    b=b+1
+print list2
+
+
+
+def intersection(list, list2):
     myList=[]
-    for numbers in lst1:
-        if numbers in lst2:
+    for numbers in list:
+        if numbers in list2:
             myList.append(numbers)
     return myList
-print intersection
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print intersection(list, list2)
 
 
 
