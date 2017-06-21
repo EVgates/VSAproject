@@ -82,6 +82,87 @@ def is_right(side1, side2, side3):
     """
     return False
 
+
+def divisors(num):
+    myList = []
+    b=int(num)
+    for b in range(1, num+1):
+        a=int(num)%b
+        if a==0:
+             myList.append(b)
+    return myList
+#print divisors(8)
+
+def prime(num):
+    length = len(divisors(num))
+    if length==2:
+        return True
+    else:
+        return False
+#print prime(8)
+
+
+
+
+#def divisors(num):
+   # myList = []
+   # b=int(num)
+   # while b>0:
+      #  a=int(num)%b
+       # if a==0:
+        #     myList.append(b)
+    #    b=b-1
+    #return myList
+#print divisors(8)
+
+#list(int)=amble
+#def prime(num):
+   # return bool
+#if >2:
+   # print False
+
+#else:
+   # print True
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # TESTS
 # Feel free to add your own tests as needed!
 
