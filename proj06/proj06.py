@@ -52,7 +52,7 @@ wordlist = load_words()
 def hangman():
     print "Let's play hangman!"
     guesses=6
-    print "You will have 6 passes for screwing up."
+    print "You will recieve 6 wrong guesses before I name you a failure."
     word = choose_word(wordlist)
     length = len(word)
     print word
@@ -63,30 +63,40 @@ def hangman():
         theList.append(letter)
     for letter in word:
         blanklist.append('_')
+        guesslist = []
     while guesses>0:
         print " ".join(blanklist)
         g = raw_input ("Guess a letter ")
-        guesslist=[]
-        a = 0
-        b = 0
+        a = -1
+        b = -1
+        c = True
+        if g == word:
+            print "You got it correct."
+            break
         for letters in theList:
-
+                b=b+1
+                a=a+1
+                #print "a=",a,"and b=",b
                 for letter in g:
                     if theList[a]== g:
+                        #print "list",a,"=",g
                         print "You got a letter right."
-                        a=a+1
                         blanklist[b]=g
-                        b=b+1
-                    else:
-                        if b>length:
-                            print "You got the letter wrong. You failed."
-                            guesslist.append(g)
-                            print " ".join(guesslist)
-                            guesses=guesses-1
-                            print "You have",guesses,"guesses left."
-                        else:
-                            b= b+1
-                            a= a+1
+                        c = False
+                        #b=b+1
+                        #a=a+1
+                    elif b >= length-1 and c==True:
+                        #print "b=",b,"and length=",length
+                        guesses = guesses - 1
+                        #print "guesses=",guesses
+                        print "You got the letter wrong. You failed, but I'll give you",guesses,"guesses more before I truly name you a failure."
+                        guesslist.append(g)
+                        print "These are your incorrect guesses:"," ".join(guesslist)
+                    #else:
+                        #a=a+1
+                        #b=b+1
+
+
 
 
 
