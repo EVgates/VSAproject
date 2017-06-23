@@ -175,15 +175,16 @@ def update_hand(hand, word):
     returns: dictionary (string -> int)
     """
     # TO DO ...
-    for letters in hand:
-        if letters in word:
-            hand[letters] = hand[letters]-1
-            if letters in word>0:
-                hand[letters] = hand[letters]-1
-
-    return hand
-
-
+    x = hand.copy()
+    for letters in word:
+        print "letters equals", letters
+        if letters in x:
+            x[letters] = x[letters] - 1
+            print "letters equals", letters
+            display_hand(x)
+            # if hand[letters]!=0:
+            # hand[letters] = hand[letters] - 1
+    return x
 
 
 
@@ -191,6 +192,7 @@ def update_hand(hand, word):
 # Problem #3: Test word validity
 #
 def is_valid_word(word, hand, word_list):
+    y=hand.copy
     """
     Returns True if word is in the word_list and is entirely
     composed of letters in the hand. Otherwise, returns False.
@@ -201,6 +203,19 @@ def is_valid_word(word, hand, word_list):
     word_list: list of lowercase strings
     """
     # TO DO...
+    for letters in word:
+        if word in word_list:
+            if letters not in y:
+                print "The word you entered contains letters that are not in your hand."
+                return false
+            if letters in y:
+                if y[letters]>= letters in word:
+                    print "The word you entered has been confirmed as valid."
+                    return true
+            else:
+                print "The word you entered is not a valid word."
+                return false
+
 
 def calculate_handlen(hand):
     handlen = 0
