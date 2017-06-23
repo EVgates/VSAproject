@@ -228,3 +228,27 @@ def play_game(word_list):
 if __name__ == '__main__':
     word_list = load_words()
     play_game(word_list)
+n=7
+generatedWord="ratings"
+def get_word_score(word, letters):
+    list=[]
+    print word
+    a=0
+    b=1
+    length=len(generatedWord)
+    for letters in word:
+        letters=SCRABBLE_LETTER_VALUES
+        list.append(letters)
+        variable=list[a]+list[b]
+        a=variable
+        b=b+1
+    score=variable*length
+    if length==HAND_SIZE:
+        score=score+50
+word=generatedWord
+letters=7
+get_word_score(word, letters)
+
+
+
+
