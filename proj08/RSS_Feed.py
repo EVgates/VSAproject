@@ -47,14 +47,14 @@ def process(url):
 
 # TODO: NewsStory
 class NewsStory(object):
-    def __init__(self, GUID, title, subject, summary, link):
-        self.GUID = GUID
+    def __init__(self, guid, title, subject, summary, link):
+        self.guid = guid
         self.title = title
         self.subject = subject
         self.summary = summary
         self.link = link
-    def get_GUID(self):
-        return self.GUID
+    def get_guid(self):
+        return self.guid
     def get_title(self):
         return self.title
     def get_subject(self):
@@ -81,8 +81,48 @@ class Trigger(object):
 
 # Whole Word Triggers
 # Problems 2-5
-
 # TODO: WordTrigger
+
+
+import string
+class WordTrigger(Trigger):
+    def __init__(self, word):
+        self.word = word
+    def is_word_in(self, str):
+        #self.str = str
+        for character in string.punctuation:
+            if character in str:
+                str = str.replace(character,' ')
+                str = str.lower()
+        str = str.split(' ')
+        if self.word in str:
+            return True
+        if self.word not in str:
+            return False
+
+#word = WordTrigger("hello")
+
+#print word.is_word_in("Hello, my name! is....Matthew.")
+
+
+
+
+class TitleTrigger(WordTrigger):
+    def __init__(self, title):
+        self.title = title
+
+    def evaluate(self, story):
+        story.get_title
+        return is_word_in(title)
+
+
+
+
+
+
+
+
+
 
 # TODO: TitleTrigger
 # TODO: SubjectTrigger
