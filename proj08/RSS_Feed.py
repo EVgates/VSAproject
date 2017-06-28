@@ -88,12 +88,12 @@ import string
 class WordTrigger(Trigger):
     def __init__(self, word):
         self.word = word
+        self.word = self.word.lower()
     def is_word_in(self, str):
-        #self.str = str
         for character in string.punctuation:
             if character in str:
                 str = str.replace(character,' ')
-                str = str.lower()
+        str = str.lower()
         str = str.split(' ')
         if self.word in str:
             return True
@@ -103,44 +103,92 @@ class WordTrigger(Trigger):
 #word = WordTrigger("hello")
 
 #print word.is_word_in("Hello, my name! is....Matthew.")
-
-
-
-
-class TitleTrigger(WordTrigger):
-    def __init__(self, title):
-        self.title = title
-
-    def evaluate(self, story):
-        story.get_title
-        return is_word_in(title)
-
-
-
-
-
-
-
+#"hello".is_word_in("hello my name is matthew")
+#self.is_word_in("hello my name is matthew")
 
 
 
 # TODO: TitleTrigger
+
+class TitleTrigger(WordTrigger):
+    def evaluate(self, story):
+        return self.is_word_in(story.get_title())
+
+
 # TODO: SubjectTrigger
+
+class SubjectTrigger(WordTrigger):
+    def evaluate(self, story):
+        return self.is_word_in(story.get_subject())
+
 # TODO: SummaryTrigger
+
+class SummaryTrigger(WordTrigger):
+    def evaluate(self, story):
+        return self.is_word_in(story.get_summary())
 
 
 # Composite Triggers
 # Problems 6-8
 
 # TODO: NotTrigger
+
+class NotTrigger(Trigger):
+    def __init__(self, otherTrigger):
+        self.otherTrigger = otherTrigger
+
+    def evaluate(self,story):
+        x = self.otherTrigger.evaluate(story)
+        if x==True:
+            return False
+        if x==False:
+            return True
+
+
+
+
 # TODO: AndTrigger
+
+class AndTrigger(Trigger):
+    def __init__(self, SecondTrigger, FirstTrigger):
+        self.SecondTrigger = SecondTrigger
+        self.FirstTrigger = FirstTrigger
+    def evaluate(self, story):
+        a = self.SecondTrigger.evaluate(story)
+        b = self.FirstTrigger.evaluate(story)
+        if a==True and b==True:
+            return True
+        else:
+            return False
+
 # TODO: OrTrigger
 
-
+class OrTrigger(Trigger):
+    def __init__(self, ThirdTrigger, FourthTrigger):
+        self.ThirdTrigger = ThirdTrigger
+        self.FourthTrigger = FourthTrigger
+    def evaluate(self, story):
+        c = self.ThirdTrigger.evaluate(story)
+        d= self.FourthTrigger.evaluate(story)
+        if c==True or d==True:
+            return True
+        else:
+            return False
 # Phrase Trigger
 # Question 9
 
 # TODO: PhraseTrigger
+
+class PhraseTrigger(Trigger):
+    def __init__(self, phrase):
+        self.phrase = phrase
+    def evaluate(self, story):
+        if self.phrase in story.get_title() or self.phrase in story.get_subject() or self.phrase in story.get_summary():
+            return True
+        else:
+            return False
+
+
 
 
 #======================
@@ -149,15 +197,23 @@ class TitleTrigger(WordTrigger):
 #======================
 
 def filter_stories(stories, triggerlist):
+
     """
     Takes in a list of NewsStory-s.
     Returns only those stories for whom
     a trigger in triggerlist fires.
     """
     # TODO: Problem 10
+    theList = []
+    for story in stories:
+        for trigger in triggerlist:
+            if trigger.evaluate(story)==True:
+                theList.append(story)
+    return theList
+
     # This is a placeholder (we're just returning all the stories, with no filtering) 
     # Feel free to change this line!
-    return stories
+
 
 #======================
 # Extensions: Part 4
@@ -191,9 +247,9 @@ import thread
 def main_thread(p):
     # A sample trigger list - you'll replace
     # this with something more configurable in Problem 11
-    t1 = SubjectTrigger("Trump")
-    t2 = SummaryTrigger("Vanderbilt")
-    t3 = PhraseTrigger("Net Neutrality")
+    t1 = SubjectTrigger("Miley Cyrus")
+    t2 = SummaryTrigger("Miley Cyrus")
+    t3 = PhraseTrigger("Miley Cyrus")
     t4 = OrTrigger(t2, t3)
     triggerlist = [t1, t4]
     
